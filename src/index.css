@@ -5,8 +5,33 @@ body {
   margin: 0;
   box-sizing: border-box;
   overflow: hidden;
+  font-family: 'Roboto', sans-serif;
 }
 
 :root {
-  --gray-shadow-color: rgba(0, 0, 0, 0.2);
+  --secondary-color: #465a74;
+  --light-gray-color: #a3b0c4;
+}
+
+.secondary-text-color {
+  color: var(--secondary-color);
+}
+
+.light-gray-text-color {
+  color: var(--light-gray-color);
+}
+
+.logo {
+  font-family: 'Pacifico', cursive;
+  letter-spacing: 2px;
+}
+
+.user-avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  box-shadow: 5px 5px 20px #eef0ff;
+}
+
+.input-file {
 }
