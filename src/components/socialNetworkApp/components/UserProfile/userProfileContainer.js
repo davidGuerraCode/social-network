@@ -1,6 +1,7 @@
 import React from 'react';
 import { HeaderContainer as Header } from '../Header';
 import { UserDataContainer as UserData } from '../UserData';
+import { PostCardContainer as PostCard } from '../PostCard';
 import { InfoCard } from '../InfoCard';
 
 const UserProfileContainer = props => {
@@ -11,6 +12,9 @@ const UserProfileContainer = props => {
         <UserData></UserData>
         <InfoCard></InfoCard>
       </header>
+      <div className="mv3">
+        <PostCard></PostCard>
+      </div>
     </>
   );
 };

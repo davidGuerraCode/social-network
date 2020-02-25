@@ -9,13 +9,11 @@ const HeaderContainer = () => {
     <Header>
       <FontAwesomeIcon
         icon={faCamera}
-        className="f4 light-gray-text-color"
-      ></FontAwesomeIcon>
-      <div className="f2 secondary-text-color b logo">Durazno</div>
+        className="f4 light-gray-text-color"></FontAwesomeIcon>
+      <div className="f3 secondary-text-color b logo">Durazno</div>
       <FontAwesomeIcon
         icon={faPaperPlane}
-        className="f4 light-gray-text-color"
-      ></FontAwesomeIcon>
+        className="f4 light-gray-text-color"></FontAwesomeIcon>
     </Header>
   );
 };

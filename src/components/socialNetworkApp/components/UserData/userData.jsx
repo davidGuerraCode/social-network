@@ -8,8 +8,8 @@ const UserData = props => {
         alt="user-avatar"
         className="user-avatar"
       />
-      <p className="f3 mt3 b secondary-text-color">John Doe</p>
-      <p className="user-description f6 tc pa3 light-gray-text-color">
+      <p className="f6 mt3 b tc secondary-text-color">John Doe</p>
+      <p className="f6 user-description tc pa3 secondary-text-color">
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. A quasi nobis
         accusantium vel quam atque.
       </p>
