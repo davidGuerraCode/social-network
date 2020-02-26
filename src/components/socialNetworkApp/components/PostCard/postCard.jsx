@@ -21,9 +21,11 @@ const PostCard = props => {
           </div>
         </div>
         <div className="">
-          <FontAwesomeIcon
-            icon={faEllipsisV}
-            className="light-gray-text-color"></FontAwesomeIcon>
+          <span>
+            <button type="button" className="btn-default">
+              <FontAwesomeIcon icon={faEllipsisV}></FontAwesomeIcon>
+            </button>
+          </span>
         </div>
       </section>
       <main className="">
@@ -44,7 +46,8 @@ const PostCard = props => {
             <button type="button" className="ph3 btn-default">
               <FontAwesomeIcon
                 icon={faComment}
-                className="f3"></FontAwesomeIcon>
+                className="f3"
+              ></FontAwesomeIcon>
             </button>
           </span>
         </div>
@@ -53,7 +56,8 @@ const PostCard = props => {
             <button className="pr2 btn-default">
               <FontAwesomeIcon
                 icon={faBookmark}
-                className="f3"></FontAwesomeIcon>
+                className="f3"
+              ></FontAwesomeIcon>
             </button>
           </span>
         </div>
@@ -61,9 +65,17 @@ const PostCard = props => {
       <section className="ph3 pv2">
         <div>
           <button type="button" className="btn-default">
-            <span className="b">1.200 likes</span>
+            <span className="f6 b">1.200 likes</span>
           </button>
         </div>
+      </section>
+      <section className="ph3 flex">
+        <p className="f6 tj">
+          <label className="b mr1">JohnDoe</label>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci,
+          exercitationem possimus! Necessitatibus porro aut assumenda enim,
+          doloribus voluptatem ut blanditiis?
+        </p>
       </section>
     </>
   );
