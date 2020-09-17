@@ -5,6 +5,7 @@ import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 const HeaderContainer = () => {
+  // Here is where the logic have to be handle!
   return (
     <Header>
       <FontAwesomeIcon

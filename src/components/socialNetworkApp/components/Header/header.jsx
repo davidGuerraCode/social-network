@@ -1,8 +1,11 @@
 import React from 'react';
 
 const Header = ({ children }) => {
+  // This component is just for render the information received by props.
   return (
-    <div className="flex justify-between items-center pa3">{children}</div>
+    <header className="flex justify-between items-center pa3 shadow-4 bb b--light-silver">
+      {children}
+    </header>
   );
 };
 

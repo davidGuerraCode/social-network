@@ -1,10 +1,10 @@
 import React from 'react';
-import { UserProfileContainer as UserProfilePage } from './components/UserProfile';
+import { UserProfile } from './pages/UserProfile';
 
 const socialNetwork = () => {
   return (
     <header>
-      <UserProfilePage></UserProfilePage>
+      <UserProfile></UserProfile>
     </header>
   );
 };

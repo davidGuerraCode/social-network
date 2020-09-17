@@ -1,12 +1,9 @@
 import React from 'react';
 import PostCard from './postCard';
 
-const PostCardContainer = props => {
-  return (
-    <div className="">
-      <PostCard></PostCard>
-    </div>
-  );
+const PostCardContainer = (props) => {
+  // Logic for the postCard component.
+  return <PostCard></PostCard>;
 };
 
 export default PostCardContainer;
