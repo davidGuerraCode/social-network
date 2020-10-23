@@ -1,0 +1,21 @@
+{
+  "name": "social-network-clone-api",
+  "version": "0.0.1",
+  "description": "API for a social network clone",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "author": "David Vasquez",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server-express": "^2.18.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "graphql": "^15.3.0",
+    "mongoose": "^5.10.9"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.5"
+  }
+}
