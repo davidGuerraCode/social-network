@@ -1,4 +1,5 @@
 const { gql } = require('apollo-server-express');
+
 const userDb = require('../dataAccessModels/user');
 const postDb = require('../dataAccessModels/post');
 
@@ -53,7 +54,6 @@ const typeDefs = gql`
   }
 
   type Posts {
-    userId: ID!
     type: String!
     url: String!
     caption: String!
@@ -61,14 +61,14 @@ const typeDefs = gql`
   }
 
   type Interactions {
-    likes: [ID]
-    comments: [Comments]
+    likesTo: [ID]
     shares: [ID]
-    saved: Boolean
+    saved: [String]
+    comments: [Comments]
   }
 
   type Comments {
-    userCommenterId: ID
+    writtenBy: ID
     comment: String
   }
 
@@ -87,6 +87,15 @@ const typeDefs = gql`
     ): User
 
     addPost(userId: ID!, type: String!, url: String!, caption: String): Posts
+
+    addInteraction(
+      postId: ID!
+      likesTo: ID
+      shares: ID
+      saved: String
+    ): Interactions
+
+    addComment(postId: ID!, writtenBy: String!, comment: String!): Comments
   }
 `;
 
@@ -97,14 +106,20 @@ const resolvers = {
     },
   },
   User: {
-    posts(parent, args) {
-      return userMock.find((user) => user.posts[0].id === +parent.id).posts;
+    async posts(parent, args) {
+      const userPostsPopulated = await userDb
+        .findById(parent._id)
+        .populate('posts')
+        .exec();
+
+      return userPostsPopulated.posts;
     },
   },
   Posts: {
-    interactions(parent, args) {
-      return userMock.find((user) => user.posts[0].id === +parent.id).posts[0]
-        .interactions;
+    async interactions(parent, args) {
+      const userPostInteranctions = await postDb.findById(parent._id);
+
+      return userPostInteranctions.interactions;
     },
   },
   Interactions: {
@@ -126,15 +141,48 @@ const resolvers = {
 
       return newUser.save();
     },
-    addPost(parent, args) {
+    async addPost(parent, args) {
       const newPost = new postDb({
-        userId: args.userId,
         type: args.type,
         url: args.url,
         caption: args.caption,
       });
 
-      return newPost;
+      const userPosting = await userDb.findById(args.userId);
+      userPosting.posts.push(newPost);
+
+      userPosting.save();
+
+      return newPost.save();
+    },
+
+    async addInteraction(parent, args) {
+      const userReceiver = await postDb.findById(args.postId);
+      console.log(userReceiver.interactions);
+      /* const newInteractionData = {
+        ...userReceiver.interactions,
+        likesTo: [...userReceiver.interactions.likesTo, args.likesTo],
+        shares: args.shares,
+        saved: args.saved,
+      };
+      userReceiver.interactions = newInteractionData;
+      userReceiver.save();
+
+      return userReceiver.interactions; */
+    },
+
+    async addComment(parent, args) {
+      const userReceiver = await postDb.findById(args.postId);
+      const newCommentData = {
+        ...userReceiver.interactions.comments,
+        writtenBy: args.writtenBy,
+        comment: args.comment,
+      };
+
+      userReceiver.interactions.comments = newCommentData;
+      userReceiver.save();
+
+      return userReceiver.interactions.comments;
     },
   },
 };

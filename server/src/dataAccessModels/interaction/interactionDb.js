@@ -2,15 +2,15 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const { commentsSchema } = require('../comments');
-
 const interactionSchema = new Schema({
-  userId: { type: Schema.Types.ObjectId, required: true },
-  likes: {
-    likers: [{ type: String, unique: true }],
-    likeReceiver: String,
+  likesTo: [{ type: String }],
+  interactReceiver: String,
+  shares: [String],
+  saved: [String],
+  comments: {
+    writtenBy: { type: Schema.Types.ObjectId },
+    comment: String,
   },
-  comments: [commentsSchema],
 });
 
 module.exports = interactionSchema;

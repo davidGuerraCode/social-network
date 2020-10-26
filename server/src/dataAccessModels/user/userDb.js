@@ -11,8 +11,7 @@ const userSchema = new Schema({
   age: { type: Number },
   gender: String,
   isVerified: { type: Boolean, default: false },
-  posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
-  // posts: [postSchema],
+  posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
 });
 
 module.exports = userSchema;
