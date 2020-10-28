@@ -158,17 +158,14 @@ const resolvers = {
 
     async addInteraction(parent, args) {
       const userReceiver = await postDb.findById(args.postId);
-      console.log(userReceiver.interactions);
-      /* const newInteractionData = {
-        ...userReceiver.interactions,
-        likesTo: [...userReceiver.interactions.likesTo, args.likesTo],
-        shares: args.shares,
-        saved: args.saved,
-      };
-      userReceiver.interactions = newInteractionData;
+
+      userReceiver.interactions.likesTo.push(args.likesTo);
+      userReceiver.interactions.shares.push(args.shares);
+      userReceiver.interactions.saved.push(args.saved);
+
       userReceiver.save();
 
-      return userReceiver.interactions; */
+      return userReceiver.interactions;
     },
 
     async addComment(parent, args) {
